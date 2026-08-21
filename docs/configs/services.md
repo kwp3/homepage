@@ -218,8 +218,9 @@ You can also specify prefixed icons from:
 - [Material Design Icons](https://pictogrammers.com/library/mdi/) with `mdi-XX`
 - [Simple Icons](https://simpleicons.org/) with `si-XX`
 - [selfh.st/icons](https://selfh.st/icons/) with `sh-XX` to use the png version or `sh-XX.svg/png/webp` for a specific version
+- [Font Awesome Free](https://fontawesome.com/search?o=r&m=free) with `fas-XX` (solid), `far-XX` (regular) or `fab-XX` (brands), served from a local checkout symlinked to `public/icons/fa` rather than a CDN
 
-You can specify a custom color for `mdi` and `si` icons by adding a hex color code as a suffix e.g. `mdi-XX-#f0d453` or `si-XX-#a712a2`.
+You can specify a custom color for `mdi`, `si` and `fa` icons by adding a hex color code as a suffix e.g. `mdi-XX-#f0d453` or `si-XX-#a712a2`.
 
 Note that these icon sets are not bundled with Homepage, they are fetched in the browser from remote CDN servers. To use the icons offline you may download the icons and serve them locally, or rely on browser caching when applicable.
 

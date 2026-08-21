@@ -67,6 +67,23 @@ describe("components/resolvedicon", () => {
     expect(div.style.background).toContain("linear-gradient");
   });
 
+  it("renders local Font Awesome icons as masked divs per style prefix", () => {
+    const cases = [
+      ["fas-server", "/icons/fa/solid/server.svg"],
+      ["far-clock", "/icons/fa/regular/clock.svg"],
+      ["fab-github", "/icons/fa/brands/github.svg"],
+    ];
+
+    cases.forEach(([icon, expected]) => {
+      const { container } = renderWithContexts(<ResolvedIcon icon={icon} />, {
+        settings: { iconStyle: "theme" },
+        theme: "dark",
+      });
+
+      expect(container.querySelector("div").getAttribute("style")).toContain(expected);
+    });
+  });
+
   it("falls back to dashboard-icons for .svg", () => {
     renderWithContexts(<ResolvedIcon icon="foo.svg" />);
     expect(screen.getByTestId("next-image").getAttribute("data-src")).toContain("/dashboard-icons/svg/foo.svg");

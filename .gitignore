@@ -52,3 +52,6 @@ site*/
 
 # venv
 .venv/
+
+# machine-local symlink to a Font Awesome checkout (see docs/configs/services.md)
+public/icons/fa

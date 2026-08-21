@@ -6,6 +6,12 @@ import { ThemeContext } from "utils/contexts/theme";
 const iconSetURLs = {
   mdi: "https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/",
   si: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/",
+  // Font Awesome Free, symlinked at public/icons/fa. Routed through the mask
+  // branch below so they take the theme color: FA svgs are fill="currentColor",
+  // which renders flat black when loaded as a plain <img>.
+  fas: "/icons/fa/solid/",
+  far: "/icons/fa/regular/",
+  fab: "/icons/fa/brands/",
 };
 
 export default function ResolvedIcon({ icon, width = 32, height = 32, alt = "logo" }) {
