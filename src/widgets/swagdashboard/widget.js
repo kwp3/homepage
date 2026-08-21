@@ -3,7 +3,7 @@ import genericProxyHandler from "utils/proxy/handlers/generic";
 const widget = {
   api: "{url}/?stats=true",
   proxyHandler: genericProxyHandler,
-  allowedEndpoints: /overview/,
+  allowedEndpoints: /^overview$/,
 };
 
 export default widget;

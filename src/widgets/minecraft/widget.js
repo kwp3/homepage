@@ -2,7 +2,7 @@ import minecraftProxyHandler from "./proxy";
 
 const widget = {
   proxyHandler: minecraftProxyHandler,
-  allowedEndpoints: /status/,
+  allowedEndpoints: /^status$/,
 };
 
 export default widget;

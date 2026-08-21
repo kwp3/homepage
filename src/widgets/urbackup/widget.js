@@ -2,7 +2,7 @@ import urbackupProxyHandler from "./proxy";
 
 const widget = {
   proxyHandler: urbackupProxyHandler,
-  allowedEndpoints: /status/,
+  allowedEndpoints: /^status$/,
 };
 
 export default widget;
