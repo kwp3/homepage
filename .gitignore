@@ -56,5 +56,11 @@ site*/
 # machine-local symlink to a Font Awesome checkout (see docs/configs/services.md)
 public/icons/fa
 
+# icons downloaded by config/fetch-icons.sh (see AGENTS.md)
+public/icons/dashboard/
+public/icons/mdi/
+public/icons/si/
+public/icons/selfhst/
+
 # knowledge graph output (graphify)
 /graphify-out/

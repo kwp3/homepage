@@ -3,9 +3,15 @@ import { useContext } from "react";
 import { SettingsContext } from "utils/contexts/settings";
 import { ThemeContext } from "utils/contexts/theme";
 
+// Every icon set is served out of public/icons rather than a CDN, so icons come
+// off local disk and the dashboard works without internet access.
+// scripts/fetch-icons.sh downloads whatever config/*.yaml references; re-run it
+// after adding an icon.
+// ponytail: no CDN fallback, so an unfetched icon 404s rather than loading
+// remotely. Add a fallback branch here if that ever bites.
 const iconSetURLs = {
-  mdi: "https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/",
-  si: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/",
+  mdi: "/icons/mdi/",
+  si: "/icons/si/",
   // Font Awesome Free, symlinked at public/icons/fa. Routed through the mask
   // branch below so they take the theme color: FA svgs are fill="currentColor",
   // which renders flat black when loaded as a plain <img>.
@@ -13,6 +19,10 @@ const iconSetURLs = {
   far: "/icons/fa/regular/",
   fab: "/icons/fa/brands/",
 };
+
+// Mirrors the CDN's <ext>/<name>.<ext> layout, so this is a prefix swap.
+const dashboardIconsURL = "/icons/dashboard/";
+const selfhstIconsURL = "/icons/selfhst/";
 
 export default function ResolvedIcon({ icon, width = 32, height = 32, alt = "logo" }) {
   const { settings } = useContext(SettingsContext);
@@ -54,7 +64,7 @@ export default function ResolvedIcon({ icon, width = 32, height = 32, alt = "log
 
     return (
       <Image
-        src={`https://cdn.jsdelivr.net/gh/selfhst/icons@main/${extension}/${iconName}.${extension}`}
+        src={`${selfhstIconsURL}${extension}/${iconName}.${extension}`}
         width={width}
         height={height}
         style={{
@@ -106,7 +116,7 @@ export default function ResolvedIcon({ icon, width = 32, height = 32, alt = "log
     const iconName = icon.replace(".svg", "");
     return (
       <Image
-        src={`https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/${iconName}.svg`}
+        src={`${dashboardIconsURL}svg/${iconName}.svg`}
         width={width}
         height={height}
         style={{
@@ -125,7 +135,7 @@ export default function ResolvedIcon({ icon, width = 32, height = 32, alt = "log
     const iconName = icon.replace(".webp", "");
     return (
       <Image
-        src={`https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/${iconName}.webp`}
+        src={`${dashboardIconsURL}webp/${iconName}.webp`}
         width={width}
         height={height}
         style={{
@@ -143,7 +153,7 @@ export default function ResolvedIcon({ icon, width = 32, height = 32, alt = "log
   const iconName = icon.replace(".png", "");
   return (
     <Image
-      src={`https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/${iconName}.png`}
+      src={`${dashboardIconsURL}png/${iconName}.png`}
       width={width}
       height={height}
       style={{

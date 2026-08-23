@@ -31,17 +31,17 @@ describe("components/resolvedicon", () => {
     expect(screen.getByTestId("next-image").getAttribute("data-src")).toBe("/icons/x.png");
   });
 
-  it("renders selfh.st icons for sh- prefix with extension", () => {
+  it("renders local selfh.st icons for sh- prefix with extension", () => {
     renderWithContexts(<ResolvedIcon icon="sh-test.webp" alt="x" />);
-    expect(screen.getByTestId("next-image").getAttribute("data-src")).toContain("/webp/test.webp");
+    expect(screen.getByTestId("next-image").getAttribute("data-src")).toBe("/icons/selfhst/webp/test.webp");
   });
 
   it("renders selfh.st icons as svg or png based on file extension", () => {
     renderWithContexts(<ResolvedIcon icon="sh-test.svg" alt="x" />);
-    expect(screen.getByTestId("next-image").getAttribute("data-src")).toContain("/svg/test.svg");
+    expect(screen.getByTestId("next-image").getAttribute("data-src")).toBe("/icons/selfhst/svg/test.svg");
 
     renderWithContexts(<ResolvedIcon icon="sh-test.png" alt="x" />);
-    expect(screen.getAllByTestId("next-image")[1].getAttribute("data-src")).toContain("/png/test.png");
+    expect(screen.getAllByTestId("next-image")[1].getAttribute("data-src")).toBe("/icons/selfhst/png/test.png");
   });
 
   it("renders mdi icons as a masked div and supports custom hex colors", () => {
@@ -53,7 +53,7 @@ describe("components/resolvedicon", () => {
     const div = container.querySelector("div");
     // Browser normalizes hex colors to rgb() strings on assignment.
     expect(div.style.background).toMatch(/(#ff00ff|rgb\(255, 0, 255\))/);
-    expect(div.getAttribute("style")).toContain("home.svg");
+    expect(div.getAttribute("style")).toContain("/icons/mdi/home.svg");
   });
 
   it("renders si icons with a masked div using the configured icon style", () => {
@@ -63,7 +63,7 @@ describe("components/resolvedicon", () => {
     });
 
     const div = container.querySelector("div");
-    expect(div.getAttribute("style")).toContain("github.svg");
+    expect(div.getAttribute("style")).toContain("/icons/si/github.svg");
     expect(div.style.background).toContain("linear-gradient");
   });
 
@@ -84,16 +84,16 @@ describe("components/resolvedicon", () => {
     });
   });
 
-  it("falls back to dashboard-icons for .svg", () => {
+  it("falls back to local dashboard-icons for .svg", () => {
     renderWithContexts(<ResolvedIcon icon="foo.svg" />);
-    expect(screen.getByTestId("next-image").getAttribute("data-src")).toContain("/dashboard-icons/svg/foo.svg");
+    expect(screen.getByTestId("next-image").getAttribute("data-src")).toBe("/icons/dashboard/svg/foo.svg");
   });
 
-  it("falls back to dashboard-icons for .webp and .png", () => {
+  it("falls back to local dashboard-icons for .webp and .png", () => {
     renderWithContexts(<ResolvedIcon icon="foo.webp" />);
-    expect(screen.getAllByTestId("next-image")[0].getAttribute("data-src")).toContain("/dashboard-icons/webp/foo.webp");
+    expect(screen.getAllByTestId("next-image")[0].getAttribute("data-src")).toBe("/icons/dashboard/webp/foo.webp");
 
     renderWithContexts(<ResolvedIcon icon="foo.png" />);
-    expect(screen.getAllByTestId("next-image")[1].getAttribute("data-src")).toContain("/dashboard-icons/png/foo.png");
+    expect(screen.getAllByTestId("next-image")[1].getAttribute("data-src")).toBe("/icons/dashboard/png/foo.png");
   });
 });
