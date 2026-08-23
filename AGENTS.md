@@ -54,7 +54,7 @@ group unless asked for a new one.
 - `siteMonitor` gives the tile an up/down dot. Add it when the target is an HTTP
   service that is expected to be running; omit it for external sites and for
   apps that are only launched on demand.
-- Widgets (Grafana stats, *arr queues, etc.) are optional and per-service — look
+- Widgets (Grafana stats, Sonarr queues, etc.) are optional and per-service — look
   the service up at <https://gethomepage.dev/widgets/> before inventing keys.
 
 ### Groups and tabs
