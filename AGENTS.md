@@ -9,13 +9,13 @@ Upstream's README.md describes the open-source project, not this instance.
 
 ## Where it runs
 
-| | |
-|---|---|
-| Local | <http://localhost:3131> (not 3000 — Grafana owns that) |
-| Tailnet | <https://siesta.rainbow-antares.ts.net> |
-| Process | launchd agent `dev.homepage`, running `next start` |
-| Config | `config/` — gitignored, live, hand-edited |
-| Logs | `~/Library/Logs/homepage.log`, `config/logs/homepage.log` |
+|         |                                                           |
+| ------- | --------------------------------------------------------- |
+| Local   | <http://localhost:3131> (not 3000 — Grafana owns that)    |
+| Tailnet | <https://siesta.rainbow-antares.ts.net>                   |
+| Process | launchd agent `dev.homepage`, running `next start`        |
+| Config  | `config/` — gitignored, live, hand-edited                 |
+| Logs    | `~/Library/Logs/homepage.log`, `config/logs/homepage.log` |
 
 ## The important part: config is live
 
@@ -109,14 +109,14 @@ indexes `public/` at startup. No rebuild, just:
 launchctl kickstart -k gui/501/dev.homepage
 ```
 
-| Form | Example | Downloaded to | Source catalog |
-|---|---|---|---|
-| Bare name | `icon: grafana` | `public/icons/dashboard/png/` | [dashboard-icons](https://github.com/homarr-labs/dashboard-icons) — most self-hosted apps, try this first. `grafana.svg` picks the svg |
-| `sh-` | `icon: sh-plex` | `public/icons/selfhst/png/` | [selfh.st/icons](https://selfh.st/icons/) |
-| `mdi-` | `icon: mdi-brain` | `public/icons/mdi/` | [Material Design Icons](https://pictogrammers.com/library/mdi/) |
-| `si-` | `icon: si-vercel` | `public/icons/si/` | [Simple Icons](https://simpleicons.org/) |
-| `fas-` `far-` `fab-` | `icon: fas-gauge-high` | `public/icons/fa/` (symlink) | Font Awesome Free |
-| Path | `icon: /icons/thing.png` | — | anything you drop in `public/` yourself |
+| Form                 | Example                  | Downloaded to                 | Source catalog                                                                                                                         |
+| -------------------- | ------------------------ | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Bare name            | `icon: grafana`          | `public/icons/dashboard/png/` | [dashboard-icons](https://github.com/homarr-labs/dashboard-icons) — most self-hosted apps, try this first. `grafana.svg` picks the svg |
+| `sh-`                | `icon: sh-plex`          | `public/icons/selfhst/png/`   | [selfh.st/icons](https://selfh.st/icons/)                                                                                              |
+| `mdi-`               | `icon: mdi-brain`        | `public/icons/mdi/`           | [Material Design Icons](https://pictogrammers.com/library/mdi/)                                                                        |
+| `si-`                | `icon: si-vercel`        | `public/icons/si/`            | [Simple Icons](https://simpleicons.org/)                                                                                               |
+| `fas-` `far-` `fab-` | `icon: fas-gauge-high`   | `public/icons/fa/` (symlink)  | Font Awesome Free                                                                                                                      |
+| Path                 | `icon: /icons/thing.png` | —                             | anything you drop in `public/` yourself                                                                                                |
 
 `mdi`, `si` and `fa` icons are drawn as CSS masks, so they take the theme color
 and accept a hex override: `mdi-radar-#f0d453`. Bare-name and `sh-` icons are
